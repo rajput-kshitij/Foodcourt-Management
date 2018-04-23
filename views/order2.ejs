@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+        @import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700');
+
+        * {
+            border-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            width: 100%;
+            padding: 70px;
+            margin: 0;
+            font-family: roboto;
+            /*background-color: rgb(192, 197, 205)*/
+        }
+
+        h6 {
+            letter-spacing: 1.1px;
+            font-weight: normal;
+        }
+        list-group-item {
+            display: list-item;
+        }
+
+        .cross {
+            text-decoration: line-through;
+            background-color: #E0FCFF;
+        }
+
+        #items-list {
+            width: 100vh;
+        }
+
+        .btn {
+            margin-left: 4px;
+        }
+
+
+
+
+    </style>
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+</head>
+<body>
+<header class="bg-info text-center text-white p-4 mb-3">
+    <h2>Food Ordering System</h2>
+    <h6> A more compact way to keep track of orders! hi </h6>
+</header>
+
+<div class="container bg-secondary pl-5" id="cont">
+
+    <form id="add-list"  method="post" action="/sendorder">
+
+        <input class="rounded bg-light col-8 my-4 p-2" id="new-item" name="new_item" placeholder="Enter restid...">
+
+        <input class="rounded bg-light col-8 my-4 p-2" id="new-item2" name="new_item2" placeholder="Enter fooditem...">
+
+
+        <input class="rounded bg-light col-8 my-4 p-2" id="new-item3" name="new_item3" placeholder="Enter quantity...">
+
+
+        <input type="submit" class="btn btn-success" id="sub" value="+" >
+
+
+        <div>
+            <ol class="list-group" id="items-list">
+            </ol>
+        </div>
+
+
+
+    </form>
+
+
+    <form  method="post" action="/billno">
+
+        <input type="submit" class="btn btn-primary" id="sub" value="Generate Bill no." >
+
+    </form>
+
+    <form  method="get" action="/total">
+
+        <input type="submit" class="btn btn-success" id="sub" value="total amount" >
+
+    </form>
+
+
+
+</div>
+
+
+</div>
+
+
+
+</body>
+
+<script>
+    var addList = document.getElementById('button');
+    var listContainer = document.getElementById('items-list');
+
+    //To add a new list //
+    addList.addEventListener('click', addEvent);
+    listContainer.addEventListener('click', removeEvent);
+    listContainer.addEventListener('click', crossOff);
+    var inputValue5= []
+    var inputValue6= []
+    var inputValue7= []
+
+    function addEvent(e) {
+        e.preventDefault();
+        var displayList = document.createElement('li');
+
+        var inputValue = document.getElementById('new-item').value;
+        var inputValue2 = document.getElementById('new-item2').value;
+        var inputValue3 = document.getElementById('new-item3').value;
+//        inputValue5.append(inputValue);
+//        inputValue6.append(inputValue);
+//        inputValue7.append(inputValue);
+
+        var inputValue4 = "Restaurant id=" + inputValue +" Food item="+ inputValue2 + " Quantity=" + inputValue3;
+        console.log(inputValue + inputValue2 + inputValue3);
+
+
+        displayList.textContent = inputValue4;
+        displayList.className = 'list-group-item mb-2 w-75';
+
+        var completeTask = document.createElement("img");
+        completeTask.setAttribute('src', 'http://res.cloudinary.com/busayyyo/image/upload/v1521210917/checkmark_pnq3h6.png');
+        completeTask.className = 'mr-2 img-margin btn btn-sm btn-info float-right';
+        completeTask.style.height = '30px';
+
+
+
+        var deleteTask = document.createElement('button');
+        deleteTask.innerHTML = 'x';
+        deleteTask.className = 'btn btn-sm btn-danger float-right mr-2';
+
+        if(inputValue4) {
+            displayList.appendChild(completeTask);
+            displayList.appendChild(deleteTask);
+            listContainer.appendChild(displayList);
+            addList.reset();
+        }
+
+
+
+    }
+
+    function removeEvent(e) {
+        if(e.target.classList.contains('btn-danger')) {
+            if (confirm('Are you sure?')) {
+                var list = e.target.parentElement;
+                listContainer.removeChild(list);
+            }
+
+        }
+    }
+
+
+    function crossOff(e) {
+        if(e.target.classList.contains('img-margin')) {
+            var list = e.target.parentElement;
+            list.classList.toggle('cross');
+        }
+    }
+
+</script>
+
+</html>

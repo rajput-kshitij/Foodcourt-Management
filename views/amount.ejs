@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700');
+
+        * {
+            border-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            width: 100%;
+            padding: 70px;
+            margin: 0;
+            font-family: roboto;
+            background-color: rgb(192, 197, 205)
+        }
+
+        h6 {
+            letter-spacing: 1.1px;
+            font-weight: normal;
+        }
+        list-group-item {
+            display: list-item;
+        }
+
+        .cross {
+            text-decoration: line-through;
+            background-color: #E0FCFF;
+        }
+
+    </style>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+
+</head>
+<body>
+<header class="bg-info text-center text-white p-4 mb-3">
+    <h2>Food Ordering System</h2>
+    <h6> A more compact way to keep track of orders! hi </h6>
+</header>
+
+<div class="container bg-secondary pl-5" id="cont">
+
+    <form method="post" action="/getamount">
+
+        <input class="rounded bg-light col-8 my-4 p-2" id="new-item" name="new_item" placeholder="Enter billno...">
+
+
+        <input type="submit" class="btn btn-success" id="sub" value="calculate total" >
+
+
+
+
+    </form>
+
+
+</div>
+
+
+
+</body>
+
+</html>

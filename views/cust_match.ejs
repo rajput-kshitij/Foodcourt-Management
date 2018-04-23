@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h2>Enter Customer detail</h2>
+  <form action="/cust_match" method="POST">
+   <div class="form-group">
+  <label for="usr">Phone Number :</label>
+  <input type="text" class="form-control" id="usr" name="cphone">
+</div>
+    
+    <button type="submit" class="btn btn-default">Submit</button>
+  </form>
+</div>
+
+</body>
+<script>
+    var x = <%=flag_invalidconsign%>
+    var cnt2 = <%=cnt2%>;
+    if(cnt2!=0){
+    if(x==1){
+        alert('Enter Again');
+    }
+    }
+</script>
+</html>
